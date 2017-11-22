@@ -4,6 +4,7 @@ import com.arkaces.aces_api_server_lib.json.NiceObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Slf4j
 public class BitcoinService {
 
     private final RestTemplate bitcoinRpcRestTemplate;
@@ -63,10 +65,11 @@ public class BitcoinService {
                                 transactionRequestEntity,
                                 JsonNode.class
                         )
-                        .getBody();
+                        .getBody()
+                        .get("result");
                 transactions.add(transaction);
             } catch (Exception e) {
-                // todo
+                log.error("Failed to extract transaction data", e);
             }
 
         }
