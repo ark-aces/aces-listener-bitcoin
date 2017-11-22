@@ -63,6 +63,8 @@ endpoint. Immediately following successful a subscription the encoded
 listener will send all new Bitcoin transactions to the registered callback
 URL.
 
+Example request:
+
 ```bash
 curl -X POST 'localhost:8080/subscriptions' \
 -H 'Content-type: application/json' \
@@ -72,6 +74,8 @@ curl -X POST 'localhost:8080/subscriptions' \
 }'
 ```
 
+Example response:
+
 ```json
 {
   "identifier" : "TwpEVgS64WKG4WalMgBk",
@@ -79,6 +83,9 @@ curl -X POST 'localhost:8080/subscriptions' \
   "createdAt" : "2017-10-24T04:15:17.091Z"
 }
 ```
+
+The `callbackUrl` will now receive POSTs for Bitcoin transactions 
+added to the blockchain:
 
 ```
 2017-11-22 00:25:27.197  INFO 10796 --- [nio-8080-exec-1] c.a.a.event.EventLogController           : {
