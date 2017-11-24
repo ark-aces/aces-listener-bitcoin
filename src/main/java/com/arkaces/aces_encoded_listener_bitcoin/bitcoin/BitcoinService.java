@@ -53,7 +53,7 @@ public class BitcoinService {
                 .getResult();
 
         List<JsonNode> transactions = new ArrayList<>();
-        for (String transactionId : block.tx.subList(0, 5)) {
+        for (String transactionId : block.tx) {
             log.info("getting raw transaction for transactionId = " + transactionId);
             HttpEntity<String> transactionRequestEntity = getRequestEntity(
                     "getrawtransaction",
