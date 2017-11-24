@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class EventListener {
             List<SubscriptionEntity> subscriptionEntities = subscriptionRepository.findAll();
 
             // Collect transactions
-            List<JsonNode> transactions = bitcoinService.getTransactions(1);
+            List<JsonNode> transactions = bitcoinService.getTransactions(2);
 
             transactions.forEach(x -> log.info("transaction: " + x.toString()));
 
@@ -36,6 +38,9 @@ public class EventListener {
             subscriptionEntities.parallelStream().forEach(subscriptionEntity -> {
                 transactions.forEach(transaction -> eventDeliveryService.deliverEvent(subscriptionEntity, transaction));
             });
+        }
+        catch (HttpServerErrorException e) {
+            log.error("failed to get transaction data" + e.getResponseBodyAsString());
         }
         catch (Exception e) {
             log.error("Transaction listener threw exception while running", e);

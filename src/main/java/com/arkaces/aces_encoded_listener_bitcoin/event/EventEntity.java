@@ -2,10 +2,7 @@ package com.arkaces.aces_encoded_listener_bitcoin.event;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.ZonedDateTime;
 
 @Data
@@ -17,8 +14,9 @@ public class EventEntity {
     @GeneratedValue
     private Long id;
 
-    private String remoteId;
+    private String transactionId;
 
+    @Column(length = 10000)
     private String data;
 
     private ZonedDateTime createdAt;

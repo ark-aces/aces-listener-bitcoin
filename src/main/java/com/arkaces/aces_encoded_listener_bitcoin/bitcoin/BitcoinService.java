@@ -11,6 +11,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -52,7 +53,8 @@ public class BitcoinService {
                 .getResult();
 
         List<JsonNode> transactions = new ArrayList<>();
-        for (String transactionId : block.tx) {
+        for (String transactionId : block.tx.subList(0, 5)) {
+            log.info("getting raw transaction for transactionId = " + transactionId);
             HttpEntity<String> transactionRequestEntity = getRequestEntity(
                     "getrawtransaction",
                     Arrays.asList(transactionId, true)
@@ -68,10 +70,11 @@ public class BitcoinService {
                         .getBody()
                         .get("result");
                 transactions.add(transaction);
+            } catch (HttpServerErrorException e) {
+                log.error("failed to get transaction data" + e.getResponseBodyAsString());
             } catch (Exception e) {
                 log.error("Failed to extract transaction data", e);
             }
-
         }
 
         // scan blocks recursively until blockDepth is reached

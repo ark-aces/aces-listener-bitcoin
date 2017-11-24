@@ -16,11 +16,15 @@ public class SubscriptionEventEntity {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
-    SubscriptionEntity subscriptionEntity;
+    private String status; // new, delivered
+
+    private Integer tries;
 
     @OneToOne
-    EventEntity eventEntity;
+    private SubscriptionEntity subscriptionEntity;
 
-    ZonedDateTime createdAt;
+    @OneToOne
+    private EventEntity eventEntity;
+
+    private ZonedDateTime createdAt;
 }
