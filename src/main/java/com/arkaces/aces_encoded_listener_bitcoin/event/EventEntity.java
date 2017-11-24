@@ -16,7 +16,7 @@ public class EventEntity {
 
     private String transactionId;
 
-    @Column(length = 10000)
+    @Column(columnDefinition="TEXT")
     private String data;
 
     private ZonedDateTime createdAt;
