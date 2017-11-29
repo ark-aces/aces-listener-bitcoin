@@ -66,20 +66,20 @@ URL.
 Example request:
 
 ```bash
-curl -X POST 'localhost:8080/subscriptions' \
+curl -X POST 'localhost:9090/subscriptions' \
 -H 'Content-type: application/json' \
 -d '{
-  "callbackUrl": "http://localhost:8080/event-logger",
+  "callbackUrl": "http://localhost:9090/event-logger",
   "minConfirmations": 5
 }'
 ```
 
-Example response:
+Example response: 
 
 ```json
 {
   "identifier" : "TwpEVgS64WKG4WalMgBk",
-  "callbackUrl" : "http://localhost:8080/event-logger",
+  "callbackUrl" : "http://localhost:9090/event-logger",
   "createdAt" : "2017-10-24T04:15:17.091Z"
 }
 ```

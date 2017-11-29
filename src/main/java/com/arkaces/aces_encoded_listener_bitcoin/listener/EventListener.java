@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.RestClientException;
 
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class EventListener {
             transactions.forEach(x -> log.info("transaction: " + x.toString()));
 
             // Send transactions to subscribers
-            // todo: don't resend already delivered transaction events to subscribers
             subscriptionEntities.parallelStream().forEach(subscriptionEntity -> {
                 transactions.forEach(transaction -> eventDeliveryService.deliverEvent(subscriptionEntity, transaction));
             });

@@ -55,6 +55,7 @@ public class EventDeliveryService {
             String callbackUrl = subscriptionEntity.getCallbackUrl();
 
             Event event = new Event();
+            event.setId(eventEntity.getId().toString());
             event.setTransactionId(transactionId);
             event.setCreatedAt(ZonedDateTime.now(ZoneOffset.UTC).toString());
             event.setData(dtoObjectMapper.writeValueAsString(transaction));

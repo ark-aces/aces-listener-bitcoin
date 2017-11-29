@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Event {
-    private String identifier;
+    private String id;
     private String transactionId;
     private String data;
     private String createdAt;
