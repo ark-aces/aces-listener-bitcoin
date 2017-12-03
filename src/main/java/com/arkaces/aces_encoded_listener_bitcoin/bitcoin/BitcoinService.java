@@ -52,6 +52,8 @@ public class BitcoinService {
                 .getBody()
                 .getResult();
 
+        log.info("Processing transactions in block (n = " + block.tx.size() + ")");
+
         List<JsonNode> transactions = new ArrayList<>();
         for (String transactionId : block.tx) {
             log.info("getting raw transaction for transactionId = " + transactionId);
@@ -71,9 +73,9 @@ public class BitcoinService {
                         .get("result");
                 transactions.add(transaction);
             } catch (HttpServerErrorException e) {
-                log.error("failed to get transaction data" + e.getResponseBodyAsString());
+                log.warn("Failed to get transaction data" + e.getResponseBodyAsString());
             } catch (Exception e) {
-                log.error("Failed to extract transaction data", e);
+                log.warn("Failed to extract transaction data", e);
             }
         }
 
