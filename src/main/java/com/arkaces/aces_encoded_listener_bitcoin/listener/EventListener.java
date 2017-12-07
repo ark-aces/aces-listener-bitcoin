@@ -34,7 +34,10 @@ public class EventListener {
 
             // Send transactions to subscribers
             subscriptionEntities.parallelStream().forEach(subscriptionEntity -> {
-                transactions.forEach(transaction -> eventDeliveryService.deliverEvent(subscriptionEntity, transaction));
+                transactions.forEach(transaction -> {
+                    String transactionId = transaction.get("txid").textValue();
+                    eventDeliveryService.saveSubscriptionEvent(subscriptionEntity, transactionId, transaction);
+                });
             });
         }
         catch (HttpServerErrorException e) {
