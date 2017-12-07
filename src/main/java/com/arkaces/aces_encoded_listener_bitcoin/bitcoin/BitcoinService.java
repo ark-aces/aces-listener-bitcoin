@@ -1,6 +1,6 @@
 package com.arkaces.aces_encoded_listener_bitcoin.bitcoin;
 
-import com.arkaces.aces_api_server_lib.json.NiceObjectMapper;
+import com.arkaces.aces_server.common.json.NiceObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

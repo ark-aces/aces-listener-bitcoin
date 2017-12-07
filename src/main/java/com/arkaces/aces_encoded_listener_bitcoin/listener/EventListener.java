@@ -1,8 +1,8 @@
 package com.arkaces.aces_encoded_listener_bitcoin.listener;
 
 import com.arkaces.aces_encoded_listener_bitcoin.bitcoin.BitcoinService;
-import com.arkaces.aces_encoded_listener_bitcoin.subscription.SubscriptionEntity;
-import com.arkaces.aces_encoded_listener_bitcoin.subscription.SubscriptionRepository;
+import com.arkaces.aces_server.aces_listener.subscription.SubscriptionEntity;
+import com.arkaces.aces_server.aces_listener.subscription.SubscriptionRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
