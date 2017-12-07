@@ -29,6 +29,16 @@ Use `vagrant up` to create a VM for running bitcoin testnet locally.
 To setup and start the bitcoin test node, run the commands in
 `setup.sh`.
 
+To use PostgreSQL for the listener database, use the following config:
+
+```yml
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/aces_listener_db
+    username: aces_listener_db_user
+    password: aces_listener_db_user_password
+    driver-class-name: org.postgresql.Driver
+```
 
 
 ## Bitcoin JSON-RPC Requests

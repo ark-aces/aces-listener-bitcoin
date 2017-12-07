@@ -44,6 +44,12 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -51,7 +57,7 @@
 		<dependency>
 			<groupId>com.arkaces</groupId>
 			<artifactId>aces_server_lib</artifactId>
-			<version>3.3.0</version>
+			<version>5.0.0</version>
 		</dependency>
 
 		<dependency>
@@ -69,6 +75,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
