@@ -1,8 +1,7 @@
 package com.arkaces.aces_encoded_listener_bitcoin.listener;
 
 import com.arkaces.aces_encoded_listener_bitcoin.bitcoin.BitcoinService;
-import com.arkaces.aces_server.aces_listener.subscription.SubscriptionEntity;
-import com.arkaces.aces_server.aces_listener.subscription.SubscriptionRepository;
+import com.arkaces.aces_server.aces_listener.event_delivery.EventDeliveryService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,30 +17,22 @@ import java.util.List;
 @Slf4j
 public class EventListener {
 
-    private final SubscriptionRepository subscriptionRepository;
     private final EventDeliveryService eventDeliveryService;
     private final BitcoinService bitcoinService;
 
     @Scheduled(fixedDelay = 2000)
     public void scanTransactions() {
         try {
-            List<SubscriptionEntity> subscriptionEntities = subscriptionRepository.findAll();
-
-            // Collect transactions
+            // todo: we should go more than 2 blocks deep to support higher confirmation limits
             List<JsonNode> transactions = bitcoinService.getTransactions(2);
-
-            transactions.forEach(x -> log.info("transaction: " + x.toString()));
-
-            // Send transactions to subscribers
-            subscriptionEntities.parallelStream().forEach(subscriptionEntity -> {
-                transactions.forEach(transaction -> {
-                    String transactionId = transaction.get("txid").textValue();
-                    eventDeliveryService.saveSubscriptionEvent(subscriptionEntity, transactionId, transaction);
-                });
-            });
+            for (JsonNode transaction : transactions) {
+                String transactionId = transaction.get("txid").textValue();
+                log.info("Sending transaction with id " + transactionId);
+                eventDeliveryService.saveSubscriptionEvents(transactionId, transaction);
+            }
         }
         catch (HttpServerErrorException e) {
-            log.error("failed to get transaction data" + e.getResponseBodyAsString());
+            log.error("Failed to get transaction data: " + e.getResponseBodyAsString());
         }
         catch (Exception e) {
             log.error("Transaction listener threw exception while running", e);
