@@ -11,7 +11,7 @@ testnet=1
 rpcallowip=0.0.0.0/0
 EOF
 
-bitcoind -daemon -testnet
+bitcoind -daemon -testnet -txindex=1
 
 // execute bitcoin commands:
 bitcoin-cli -testnet getblockcount
