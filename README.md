@@ -1,8 +1,7 @@
-# ACES Bitcoin Encoded Listener
+# ACES Listener Bitcoin
 
 This service runs along side a bitcoin node and scans the blockchain
-for new transactions to send to subscribers using the ACES 
-Encoded Listener API.
+for new transactions to send to subscribers using the ACES Listener API.
 
 
 ## How it Works
@@ -69,7 +68,7 @@ transaction information.
 ## Example Usage
 
 Consumers register their Http callback endpoint by posting to the `subscriptions`
-endpoint. Immediately following successful a subscription the encoded
+endpoint. Immediately following successful a subscription the
 listener will send all new Bitcoin transactions to the registered callback
 URL.
 
