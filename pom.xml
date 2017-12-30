@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.arkaces</groupId>
-	<artifactId>aces-encoded-listener-bitcoin</artifactId>
+	<artifactId>aces_listener_bitcoin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>aces-encoded-listener-bitcoin</name>
-	<description>ACES Encoded Listener implementation for bitcoin</description>
+	<name>aces_listener_bitcoin</name>
+	<description>ACES Listener implementation for Bitcoin</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.arkaces</groupId>
 			<artifactId>aces_server_lib</artifactId>
-			<version>5.2.0</version>
+			<version>5.4.0</version>
 		</dependency>
 
 		<dependency>

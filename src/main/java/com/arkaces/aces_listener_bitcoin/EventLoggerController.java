@@ -1,4 +1,4 @@
-package com.arkaces.aces_encoded_listener_bitcoin;
+package com.arkaces.aces_listener_bitcoin;
 
 import com.arkaces.aces_server.common.json.NiceObjectMapper;
 import com.arkaces.aces_server.aces_listener.event.Event;

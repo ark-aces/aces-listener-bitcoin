@@ -1,4 +1,4 @@
-package com.arkaces.aces_encoded_listener_bitcoin;
+package com.arkaces.aces_listener_bitcoin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.arkaces.aces_encoded_listener_bitcoin.bitcoin;
+package com.arkaces.aces_listener_bitcoin.bitcoin;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

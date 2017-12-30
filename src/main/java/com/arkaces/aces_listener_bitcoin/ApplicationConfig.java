@@ -1,7 +1,7 @@
-package com.arkaces.aces_encoded_listener_bitcoin;
+package com.arkaces.aces_listener_bitcoin;
 
+import com.arkaces.aces_listener_bitcoin.bitcoin.BitcoinRpcSettings;
 import com.arkaces.aces_server.aces_listener.config.AcesListenerConfig;
-import com.arkaces.aces_encoded_listener_bitcoin.bitcoin.BitcoinRpcSettings;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;

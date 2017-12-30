@@ -1,6 +1,6 @@
-package com.arkaces.aces_encoded_listener_bitcoin.listener;
+package com.arkaces.aces_listener_bitcoin.listener;
 
-import com.arkaces.aces_encoded_listener_bitcoin.bitcoin.BitcoinService;
+import com.arkaces.aces_listener_bitcoin.bitcoin.BitcoinService;
 import com.arkaces.aces_server.aces_listener.event_delivery.EventDeliveryService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
