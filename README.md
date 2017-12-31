@@ -78,7 +78,7 @@ Example request:
 curl -X POST 'localhost:9090/subscriptions' \
 -H 'Content-type: application/json' \
 -d '{
-  "callbackUrl": "http://localhost:9090/event-logger",
+  "callbackUrl": "http://localhost:9090/public/eventLogger",
   "minConfirmations": 5
 }'
 ```
@@ -88,7 +88,7 @@ Example response:
 ```json
 {
   "identifier" : "TwpEVgS64WKG4WalMgBk",
-  "callbackUrl" : "http://localhost:9090/event-logger",
+  "callbackUrl" : "http://localhost:9090/public/eventLogger",
   "createdAt" : "2017-10-24T04:15:17.091Z"
 }
 ```

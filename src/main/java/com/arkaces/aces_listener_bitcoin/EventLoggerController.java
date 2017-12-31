@@ -19,7 +19,7 @@ public class EventLoggerController {
 
     private final NiceObjectMapper logObjectMapper;
 
-    @PostMapping("/event-logger")
+    @PostMapping("/public/eventLogger")
     public Event postEvent(@RequestBody Event event) {
         log.info(logObjectMapper.writeValueAsString(event));
         return event;
