@@ -2,6 +2,7 @@ package com.arkaces.aces_listener_bitcoin;
 
 import com.arkaces.aces_listener_bitcoin.bitcoin.BitcoinRpcSettings;
 import com.arkaces.aces_server.aces_listener.config.AcesListenerConfig;
+import com.arkaces.aces_server.ark_auth.ArkAuthConfig;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -10,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableScheduling
-@Import(AcesListenerConfig.class)
+@Import({AcesListenerConfig.class, ArkAuthConfig.class})
 public class ApplicationConfig {
 
     @Bean

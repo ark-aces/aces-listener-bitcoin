@@ -1,4 +1,4 @@
-package com.arkaces.aces_listener_bitcoin.listener;
+package com.arkaces.aces_listener_bitcoin;
 
 import com.arkaces.aces_listener_bitcoin.bitcoin.BitcoinService;
 import com.arkaces.aces_server.aces_listener.event_delivery.EventDeliveryService;
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Slf4j
-public class EventListener {
+public class BitcoinEventListener {
 
     private final EventDeliveryService eventDeliveryService;
     private final BitcoinService bitcoinService;
