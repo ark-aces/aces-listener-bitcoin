@@ -22,7 +22,7 @@ public class ApplicationConfig {
     @Bean
     public RestTemplate bitcoinRpcRestTemplate(BitcoinRpcSettings bitcoinRpcSettings) {
         return new RestTemplateBuilder()
-            .rootUri("http://localhost:18332/")
+            .rootUri(bitcoinRpcSettings.getUrl())
             .basicAuthorization(bitcoinRpcSettings.getUsername(), bitcoinRpcSettings.getPassword())
             .build();
     }

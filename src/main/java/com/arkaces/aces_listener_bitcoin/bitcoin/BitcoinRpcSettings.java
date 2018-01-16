@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "bitcoinRpc")
 public class BitcoinRpcSettings {
+    private String url;
     private String username;
     private String password;
 }
