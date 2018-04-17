@@ -7,8 +7,9 @@ serverInfo:
 maxScanBlockDepth: 4
 
 bitcoinRpc:
-  username: bitcoinrpc
-  password: change_this_to_a_long_random_password
+  url: "http://localhost:18332/"
+  username: "bitcoinrpc"
+  password: "change_this_to_a_long_random_password"
 
 server:
   port: 9090
