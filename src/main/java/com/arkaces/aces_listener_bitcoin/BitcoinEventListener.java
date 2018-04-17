@@ -20,11 +20,12 @@ public class BitcoinEventListener {
 
     private final EventDeliveryService eventDeliveryService;
     private final BitcoinService bitcoinService;
+    private final Integer maxScanBlockDepth;
 
     @Scheduled(fixedDelay = 2000)
     public void scanTransactions() {
         try {
-            List<JsonNode> transactions = bitcoinService.getTransactions(4);
+            List<JsonNode> transactions = bitcoinService.getTransactions(maxScanBlockDepth, null);
             for (JsonNode transaction : transactions) {
                 String transactionId = transaction.get("txid").textValue();
 

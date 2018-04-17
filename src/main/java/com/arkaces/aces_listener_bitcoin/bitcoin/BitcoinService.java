@@ -29,17 +29,24 @@ public class BitcoinService {
 
     private final NiceObjectMapper objectMapper = new NiceObjectMapper(new ObjectMapper());
 
-    public List<JsonNode> getTransactions(Integer blockDepth) {
-        HttpEntity<String> blockHashRequestEntity = getRequestEntity("getbestblockhash", new ArrayList<>());
-        String blockHash = bitcoinRpcRestTemplate
-                .exchange(
-                    "/",
-                    HttpMethod.POST,
-                    blockHashRequestEntity,
-                    new ParameterizedTypeReference<BitcoinRpcResponse<String>>() {}
-                )
-                .getBody()
-                .getResult();
+    public List<JsonNode> getTransactions(Integer blockDepth, String lastBlockhash) {
+        String blockHash;
+        if (lastBlockhash == null) {
+            HttpEntity<String> blockHashRequestEntity = getRequestEntity("getbestblockhash", new ArrayList<>());
+            blockHash = bitcoinRpcRestTemplate
+                    .exchange(
+                            "/",
+                            HttpMethod.POST,
+                            blockHashRequestEntity,
+                            new ParameterizedTypeReference<BitcoinRpcResponse<String>>() {}
+                    )
+                    .getBody()
+                    .getResult();
+        } else {
+            blockHash = lastBlockhash;
+        }
+
+        log.info("Scanning depth = " + blockDepth + ", blockHash = " + blockHash);
 
         HttpEntity<String> blockRequestEntity = getRequestEntity("getblock", Arrays.asList(blockHash));
         Block block = bitcoinRpcRestTemplate
@@ -81,7 +88,8 @@ public class BitcoinService {
 
         // scan blocks recursively until blockDepth is reached
         if (! blockDepth.equals(0)) {
-            transactions.addAll(getTransactions(blockDepth - 1));
+            String previousBlockHash = block.getPreviousblockhash();
+            transactions.addAll(getTransactions(blockDepth - 1, previousBlockHash));
         }
         return transactions;
     }

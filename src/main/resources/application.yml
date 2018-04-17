@@ -33,3 +33,11 @@ arkAuth:
 logging:
   level:
     com.arkaces.aces_listener_bitcoin.BitcoinEventListener: ERROR
+
+#spring:
+#  datasource:
+#    url: "jdbc:h2:/tmp/btc-listener.db;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE"
+#    driver-class-name: "org.h2.Driver"
+#  jpa:
+#    hibernate:
+#      ddl-auto: "update"

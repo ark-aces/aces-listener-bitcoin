@@ -65,6 +65,14 @@ This application uses JSON-RPC calls to query bitcoin
 transaction information.
 
 
+## Run Application
+
+Run application:
+
+```
+mvn spring-boot:run
+```
+
 ## Example Usage
 
 Consumers register their Http callback endpoint by posting to the `subscriptions`
